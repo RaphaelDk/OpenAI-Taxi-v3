@@ -1,0 +1,23 @@
+{
+    "random_action": {
+        "iterations": 10000,
+        "epochs": 2435.5558,
+        "rewards_per_epoch": -3.863639739825704,
+        "penalities": 789.08,
+        "duration": 27.69549963474274
+    },
+    "random_action_v2": {
+        "iterations": 10000,
+        "epochs": 866.0482,
+        "rewards_per_epoch": -0.9208695301997217,
+        "penalities": 0,
+        "duration": 10.639662289619446
+    },
+    "q_learning": {
+        "iterations": 20000,
+        "epochs": 13.06975,
+        "rewards_per_epoch": 0.6819331640785684,
+        "penalities": 0,
+        "duration": 0.40697072744369506
+    }
+}
