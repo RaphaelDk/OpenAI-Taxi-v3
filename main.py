@@ -16,6 +16,7 @@ agents = { "random_action": random_action,
          }
 
 iterations = int(sys.argv[2])
+agent = sys.argv[1]
 epochs = []
 rewards_per_epoch = []
 penalities = []
@@ -25,7 +26,7 @@ for i_episode in range(iterations):
     env.reset()
 
     start = time.time()
-    stats = agents[sys.argv[1]](env)
+    stats = agents[agent](env)
     end = time.time()
 
     epochs.append(stats[0])
@@ -37,13 +38,13 @@ env.close()
 
 with open('benchmark.json') as json_file:
     benchmarks = json.load(json_file)
-    total_iterations = (benchmarks[sys.argv[1]]['iterations'] + iterations)
+    total_iterations = (benchmarks[agent]['iterations'] + iterations)
 
-    benchmarks[sys.argv[1]]['epochs'] = (benchmarks[sys.argv[1]]['epochs'] * benchmarks[sys.argv[1]]['iterations'] + np.sum(epochs)) / total_iterations
-    benchmarks[sys.argv[1]]['rewards_per_epoch'] = (benchmarks[sys.argv[1]]['rewards_per_epoch'] * benchmarks[sys.argv[1]]['iterations'] + np.sum(rewards_per_epoch)) / total_iterations
-    benchmarks[sys.argv[1]]['penalities'] = (benchmarks[sys.argv[1]]['penalities'] * benchmarks[sys.argv[1]]['iterations'] + np.sum(penalities)) / total_iterations
-    benchmarks[sys.argv[1]]['duration'] = (benchmarks[sys.argv[1]]['duration'] * benchmarks[sys.argv[1]]['iterations'] + np.sum(durations)) / total_iterations
-    benchmarks[sys.argv[1]]['iterations'] = total_iterations
+    benchmarks[agent]['epochs'] = (benchmarks[agent]['epochs'] * benchmarks[agent]['iterations'] + np.sum(epochs)) / total_iterations
+    benchmarks[agent]['rewards_per_epoch'] = (benchmarks[agent]['rewards_per_epoch'] * benchmarks[agent]['iterations'] + np.sum(rewards_per_epoch)) / total_iterations
+    benchmarks[agent]['penalities'] = (benchmarks[agent]['penalities'] * benchmarks[agent]['iterations'] + np.sum(penalities)) / total_iterations
+    benchmarks[agent]['duration'] = (benchmarks[agent]['duration'] * benchmarks[agent]['iterations'] + np.sum(durations)) / total_iterations
+    benchmarks[agent]['iterations'] = total_iterations
 
 with open('benchmark.json', 'w') as json_file:
     json.dump(benchmarks, json_file)

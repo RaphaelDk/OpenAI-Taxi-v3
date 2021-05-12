@@ -6,7 +6,9 @@ def random_action(env):
     done = False
 
     while not done:
+        # Récupérer les actions possibles et en choisir une au hasard
         action = env.action_space.sample()
+        # Récupérer l'état et autres info en fonction de l'action
         state, reward, done, info = env.step(action)
 
         if reward == -10:

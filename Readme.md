@@ -1,3 +1,7 @@
+chmod +x main.py
+
+./main.py [agent] [iterations]
+
 Sans le .env à la fin du make, l'algo s'arrête à 200 itérations
 
 The filled square represents the taxi, which is yellow without a passenger and green with a passenger.
